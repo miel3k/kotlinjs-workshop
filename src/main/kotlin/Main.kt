@@ -3,6 +3,7 @@ import org.w3c.dom.HTMLImageElement
 import org.w3c.dom.HTMLParagraphElement
 import org.w3c.xhr.XMLHttpRequest
 import kotlin.browser.document
+import kotlin.dom.addClass
 
 fun main() {
     val content = document.getElementById("content") as HTMLDivElement
@@ -14,6 +15,9 @@ fun main() {
             val avatarElement = document.createElement("img") as HTMLImageElement
             loginElement.textContent = it.login
             avatarElement.src = it.avatar_url
+            containerElement.addClass("card", "card-shadow")
+            loginElement.addClass("text-login")
+            avatarElement.addClass("cover-avatar")
             containerElement.append(loginElement, avatarElement)
             content.appendChild(containerElement)
         }
