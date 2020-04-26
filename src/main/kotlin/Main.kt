@@ -1,3 +1,4 @@
+import kotlinx.html.classes
 import kotlinx.html.dom.append
 import kotlinx.html.img
 import kotlinx.html.js.div
@@ -13,10 +14,11 @@ fun main() {
         users.forEach {
             content.append {
                 div {
-                    p {
+                    classes = setOf("card", "card-shadow")
+                    p(classes = "text-login") {
                         +it.login
                     }
-                    img {
+                    img(classes = "cover-avatar") {
                         src = it.avatar_url
                     }
                 }
