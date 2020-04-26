@@ -9,7 +9,8 @@ import kotlin.browser.document
 
 fun main() {
     val content = document.getElementById("content") as HTMLDivElement
-    getAsync("https://api.github.com/users") { responseText ->
+    val apiUrl = js("getApiUrl()") as String
+    getAsync("$apiUrl/users") { responseText ->
         val users = JSON.parse<Array<User>>(responseText)
         users.forEach {
             content.append {
